@@ -1,18 +1,38 @@
 # loops
 
-**Outbound agentic feedback loops on Telegram — they talk to real people, hear them out, ship the fix, and come back. They run in your own coding agent, on your own machine.**
+**Loop engineering, with hands.** Most agent loops run *inward* — edit a file, run it, keep the change. These run *outward*: your coding agent DMs your beta testers on Telegram, hears their voice notes, ships the fix, and replies — looping until the feedback dries up. In your own agent, on your own machine.
 
-Every loop here is an open prompt (a `SKILL.md`) plus a few small open scripts it calls. You load them into your own agent (Claude Code, Cursor, Codex); they run locally with your own Telegram account. Nothing runs on a server, nothing phones home. Read the prompts before you run them — that's the whole security model.
+> You hand your agent a GitHub link. It logs into *your* Telegram, listens for testers' `@claude` voice notes, transcribes them locally, ships a small fix, and DMs back the new version. You watch.
 
----
+Every loop is an open prompt (`SKILL.md`) plus a few small open scripts it calls. Nothing runs on a server, nothing phones home. Read the prompts before you run them — that's the whole security model.
 
-## What's inside
+![how loops installs and runs](docs/setup-flow.svg)
 
-- **`tg-contacts-feedback`** — a closed loop with a known list of testers. It DMs them, waits for a reply that starts with `@claude` (text or a voice note), transcribes voice locally, polishes it into `{source, insight, action, return-question}`, ships a small fix, and replies with the new version.
+## The loops
+
+- **`tg-contacts-feedback`** — a closed loop with a known list of testers. It DMs them, waits for a reply that starts with `@claude` (text or a voice note), transcribes voice locally, polishes it into `{source, insight, action, return-question}`, ships a small git fix, and replies with the new version.
 - **`tg-comments-feedback`** — an open loop over `@claude` mentions across your chats / a launch thread, grouped by theme. (Newer — less battle-tested than contacts.)
 - **`setup`** — the installer prompt. Hand it to your agent and it wires everything up: api keys, Telegram QR-login, the transcription backend, and a smoke test.
 
-All three are skills = open prompts. The shared machinery — Telegram client, transcription, the durable inbox — lives once in [`spine/`](spine/README.md).
+The shared machinery — Telegram client, transcription, the durable inbox — lives once in [`spine/`](spine/README.md).
+
+## Watch it connect
+
+A fresh clone, your own Telegram, one QR scan — and it's live (real output, handle redacted):
+
+```text
+$ npm run login
+Scan in Telegram -> Settings -> Devices -> Link Desktop Device
+  [ a QR opens on your screen — scan it ]
+Signed in successfully as You
+Logged in as @you. Session saved to .loops/personal.session
+
+$ node spine/poll.mjs --mode mentions
+[connected as @you] mode=mentions
+{ "mode": "mentions", "found": [], "count": 0 }
+```
+
+From here, a tagged voice note from a tester comes back as `{ feedback: "[voice->text]: ..." }`, the loop ships a fix, and replies in-thread.
 
 ## How it actually works
 
