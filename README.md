@@ -40,14 +40,14 @@ It logs into *your own* Telegram as a userbot (GramJS / MTProto), so it reads th
 
 ## Install (it's a skill)
 
-1. **Install the skill** — your agent learns the loop commands:
+1. **Install the skill:**
    ```
    npx skills add eugeneshilow/loops
    ```
-2. **Open your coding agent** (Claude Code, Cursor, Codex — any) and say **“run setup”**. The setup skill fetches the scripts, installs deps, and wires up your Telegram — you only paste api keys (from [my.telegram.org](https://my.telegram.org)) and scan a QR. See [`skills/setup/SKILL.md`](skills/setup/SKILL.md).
-3. **Say “run tg-contacts-feedback”** to start a loop.
+2. **Open your coding agent** (Claude Code, Cursor, Codex — any).
+3. **Activate it** — say **“use loops”** (or `/loops`). The skill guides you the rest of the way: a one-time setup (you paste api keys from [my.telegram.org](https://my.telegram.org) and scan a QR), then it lists the loops, you pick one, and it runs.
 
-Prefer cloning directly? `git clone https://github.com/eugeneshilow/loops`, then “run setup” — same thing.
+You never memorize command names — the skill drives. Prefer cloning? `git clone https://github.com/eugeneshilow/loops`, then “use loops” — same thing.
 
 ## Bring your own (all yours, all local)
 
