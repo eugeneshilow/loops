@@ -1,0 +1,17 @@
+# copy to loop.run.yaml in your working dir, then fill in.
+# mentions mode scans your recent chats for @claude; channel/launch_post_id are
+# informational anchors for what you're watching.
+
+channel: "@your_channel"
+launch_post_id: 0                       # the launch post whose thread you're mining (optional)
+
+repo_path: "."
+editable_globs:
+  - "app/**"
+  - "content/**"
+
+reply_voice: "concise, friendly, the owner's voice; no promises, no prices"
+
+gate: "time"                            # "time" | "iterations"
+budget_minutes: 120
+run_tag: "market-2026-06"

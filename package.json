@@ -1,0 +1,18 @@
+{
+  "name": "loops",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Outbound agentic feedback loops on Telegram — run them in your own agent, on your own machine.",
+  "license": "MIT",
+  "scripts": {
+    "login": "node spine/login.mjs",
+    "poll:contacts": "node spine/poll.mjs --mode contacts",
+    "poll:mentions": "node spine/poll.mjs --mode mentions"
+  },
+  "dependencies": {
+    "telegram": "^2.26.22",
+    "dotenv": "^16.4.5",
+    "qrcode-terminal": "^0.12.0"
+  }
+}

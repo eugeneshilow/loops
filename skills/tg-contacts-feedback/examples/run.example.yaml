@@ -1,0 +1,17 @@
+# copy to loop.run.yaml in your working dir, then fill in.
+# `testers` must also be mirrored into LOOP_TESTERS in .loops/.env.
+
+testers:
+  - "@nikmcfly"
+  - "@your_tester_2"
+
+link: "https://your.app/test"          # the build testers should walk each round
+repo_path: "."                          # local path to the product repo where fixes land
+editable_globs:                         # files the loop may change (keeps it off risky zones)
+  - "app/**"
+  - "components/**"
+  - "content/**"
+
+gate: "iterations"                      # "iterations" | "time"
+budget_iterations: 8
+run_tag: "contacts-2026-06"

@@ -1,0 +1,26 @@
+# node
+node_modules/
+
+# local secrets + state — NEVER commit (this is your own Telegram account)
+.loops/
+*.session
+*.env
+!.env.example
+
+# downloaded voice / media + transcripts
+media/
+mentions-media/
+*.ogg
+*.oga
+*.opus
+*.mp3
+*.m4a
+*.wav
+
+# loop state + durable inbox
+*_state.json
+*_cursor.json
+claude_inbox.jsonl
+
+# os
+.DS_Store

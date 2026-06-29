@@ -1,0 +1,12 @@
+{
+  "name": "loops",
+  "description": "Outbound agentic feedback loops on Telegram, run in your own agent on your own machine. tg-contacts-feedback DMs your testers, hears their @claude voice notes, ships a fix, replies. tg-comments-feedback mines @claude mentions across your chats. setup wires up your Telegram (QR login) + transcription. Open prompts + small scripts; bring your own Telegram account.",
+  "version": "0.1.0",
+  "author": {
+    "name": "vibecoding"
+  },
+  "homepage": "https://github.com/eugeneshilow/loops",
+  "repository": "https://github.com/eugeneshilow/loops",
+  "license": "MIT",
+  "skills": "./skills/"
+}

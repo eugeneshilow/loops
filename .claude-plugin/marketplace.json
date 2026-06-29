@@ -1,0 +1,17 @@
+{
+  "name": "loops",
+  "owner": {
+    "name": "vibecoding",
+    "url": "https://github.com/eugeneshilow"
+  },
+  "metadata": {
+    "description": "Loops with hands: outbound agentic feedback loops on Telegram. Hear real testers and your launch audience, ship the fix, return the new version — all in your own agent, on your own machine."
+  },
+  "plugins": [
+    {
+      "name": "loops",
+      "source": "./",
+      "description": "Telegram feedback loops (tg-contacts-feedback, tg-comments-feedback) + a setup skill, on a shared userbot/transcribe/inbox spine. Skills install namespaced as loops:<name>."
+    }
+  ]
+}
