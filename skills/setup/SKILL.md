@@ -17,9 +17,15 @@ metadata:
 
 Everything runs locally as a userbot on the user's OWN Telegram account. Nothing leaves the machine. Read this fully, then walk the steps in order. Two of the steps are HUMAN steps — do them WITH the user, don't try to fake them.
 
-## 1. Node deps (agent)
+## 1. Get the scripts + deps (agent)
 
-From the repo root: `npm install`. Needs Node >= 18 (`node -v`). This installs GramJS (`telegram`), `dotenv`, `qrcode-terminal`.
+The loops are open prompts; the machinery they call lives in `spine/` in the repo. If `npx skills add` installed only the prompts, the scripts aren't here yet — if the current folder has no `spine/` directory, fetch them:
+
+```
+git clone https://github.com/eugeneshilow/loops && cd loops
+```
+
+Then `npm install` (needs Node >= 18, `node -v`). This installs GramJS (`telegram`), `dotenv`, `qrcode`, `qrcode-terminal`. The user never has to run this by hand — you do it.
 
 ## 2. Telegram credentials — HUMAN step
 

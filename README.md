@@ -38,21 +38,16 @@ From here, a tagged voice note from a tester comes back as `{ feedback: "[voice-
 
 It logs into *your own* Telegram as a userbot (GramJS / MTProto), so it reads the DMs and chats you already have — no separate bot, your testers just reply to you. When a message starts with `@claude`, the loop treats it as feedback-for-the-agent: it takes the text or the voice note, transcribes voice locally with whisper, and an always-on poller drops the hit into a durable inbox so nothing is lost even when no agent session is up. A live session drains the inbox, acts, and replies in-thread to close the loop. It reacts 👀 so you can see it caught your ping, and it never puts `@claude` in its own messages — otherwise it would catch itself and spin forever.
 
-## Install (runs on your machine)
+## Install (it's a skill)
 
-These loops need a couple of scripts plus Node deps, so the simplest path is to clone and let `setup` do the rest:
+1. **Install the skill** — your agent learns the loop commands:
+   ```
+   npx skills add eugeneshilow/loops
+   ```
+2. **Open your coding agent** (Claude Code, Cursor, Codex — any) and say **“run setup”**. The setup skill fetches the scripts, installs deps, and wires up your Telegram — you only paste api keys (from [my.telegram.org](https://my.telegram.org)) and scan a QR. See [`skills/setup/SKILL.md`](skills/setup/SKILL.md).
+3. **Say “run tg-contacts-feedback”** to start a loop.
 
-```
-git clone https://github.com/eugeneshilow/loops && cd loops
-```
-
-Then open the folder in your agent and say **“run setup”** (or `/setup`). It installs deps, gets your Telegram credentials, runs the QR-login, sets up transcription, and smoke-tests — see [`skills/setup/SKILL.md`](skills/setup/SKILL.md).
-
-To pull just the loop prompts into another project (without the scripts):
-
-```
-npx skills add eugeneshilow/loops --skill tg-contacts-feedback
-```
+Prefer cloning directly? `git clone https://github.com/eugeneshilow/loops`, then “run setup” — same thing.
 
 ## Bring your own (all yours, all local)
 
